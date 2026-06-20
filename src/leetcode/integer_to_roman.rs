@@ -16,7 +16,7 @@ impl IntegerToRomanSolution {
 
         i = 100;
         if num2 > i {
-            let mut m = num2 / i;
+            let m = num2 / i;
             if m == 4 {
                 r_num.push_str("CD");
             } else if m == 9 {
@@ -35,7 +35,7 @@ impl IntegerToRomanSolution {
 
         i = 10;
         if num2 > i {
-            let mut m = num2 / i;
+            let m = num2 / i;
             if m == 4 {
                 r_num.push_str("XL");
             } else if m == 9 {
@@ -54,7 +54,7 @@ impl IntegerToRomanSolution {
 
         i = 0;
         if num2 > i {
-            let mut m = num2;
+            let m = num2;
             if m == 4 {
                 r_num.push_str("IV");
             } else if m == 9 {
