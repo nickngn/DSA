@@ -9,29 +9,25 @@
 
 use std::cmp::min;
 
-struct ContainerWithMostWater;
+pub fn max_area(height: Vec<i32>) -> i32 {
+    let mut x1 = 0;
+    let mut x2 = height.len() - 1;
+    let mut y = 0;
+    let mut area = (x2 - x1) * y;
 
-impl ContainerWithMostWater {
-    pub fn max_area(height: Vec<i32>) -> i32 {
-        let mut x1 = 0;
-        let mut x2 = height.len() - 1;
-        let mut y = 0;
-        let mut area = (x2 - x1) * y;
-
-        while x1 < x2 {
-            println!("x1: {}, x2: {}, y: {}, area: {}", x1, x2, y, area);
-            if min(height[x1], height[x2]) as usize * (x2 - x1) > area  {
-                y = min(height[x1], height[x2]) as usize;
-                area = (x2 - x1) * y;
-            }
-            if height[x1] < height[x2] {
-                x1 += 1;
-            } else {
-                x2 -= 1;
-            }
+    while x1 < x2 {
+        println!("x1: {}, x2: {}, y: {}, area: {}", x1, x2, y, area);
+        if min(height[x1], height[x2]) as usize * (x2 - x1) > area {
+            y = min(height[x1], height[x2]) as usize;
+            area = (x2 - x1) * y;
         }
-        area as i32
+        if height[x1] < height[x2] {
+            x1 += 1;
+        } else {
+            x2 -= 1;
+        }
     }
+    area as i32
 }
 
 #[cfg(test)]
@@ -40,12 +36,12 @@ mod tests {
 
     #[test]
     fn test_11() {
-        assert_eq!(49, ContainerWithMostWater::max_area(vec![1,8,6,2,5,4,8,3,7]));
-        assert_eq!(1, ContainerWithMostWater::max_area(vec![1,1]));
+        assert_eq!(49, max_area(vec![1, 8, 6, 2, 5, 4, 8, 3, 7]));
+        assert_eq!(1, max_area(vec![1, 1]));
     }
 
     #[test]
     fn test_12() {
-        assert_eq!(4, ContainerWithMostWater::max_area(vec![1,2,4,3]));
+        assert_eq!(4, max_area(vec![1, 2, 4, 3]));
     }
 }
